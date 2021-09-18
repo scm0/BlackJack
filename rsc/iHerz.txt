@@ -1,0 +1,13 @@
+rsc/2Herz.png
+rsc/3Herz.png
+rsc/4Herz.png
+rsc/5Herz.png
+rsc/6Herz.png
+rsc/7Herz.png
+rsc/8Herz.png
+rsc/9Herz.png
+rsc/10Herz.png
+rsc/BubeHerz.png
+rsc/DameHerz.png
+rsc/KoenigHerz.png
+rsc/AssHerz.png
