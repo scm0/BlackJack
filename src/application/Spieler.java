@@ -267,7 +267,7 @@ public class Spieler {
 		anzahlkarten+=1;
 		}
 	}
-	public void snewround() {
+	public void snewround() {//rücksetzung für eine neue Runde
 		setzen=0;
 		k1=0;
 		k2=0;
@@ -322,7 +322,10 @@ public class Spieler {
 	}
 	public void schlussauswertung(Dealer dealer) {
 		//Status Prüfung auf Stand
-		if(Status=='b'&& dealer.getSumme()==21&&dealer.getAnzahlkarten()==2)Status='p';
+		if(Status=='b'&& dealer.getSumme()==21&&dealer.getAnzahlkarten()==2) {
+			Status='p';
+			kontostand+=setzen;
+		}
 		if(Status=='s') {
 			//Prüfung ob verloren d>s
 			if(dealer.getSumme()>summe&&dealer.getSumme()<22)Status='l';
@@ -340,13 +343,12 @@ public class Spieler {
 		// Kontostand Berechnung bei Blackjack
 	
 		else if(Status=='b')kontostand+=(setzen*2.5);
-		
-	}
- public void schlussauswertungsp(Dealer dealer) {
-	//Prüfung ob ein Spieler ein Splitt gespielt hat
 			if(splitt==true) {
 				//Status Prüfung auf Stand
-			if(Statussp=='b'&&dealer.getSumme()==21&&dealer.getAnzahlkarten()==2)Statussp='p';
+			if(Statussp=='b'&&dealer.getSumme()==21&&dealer.getAnzahlkarten()==2) {
+				Statussp='p';
+				kontostand+=setzensp;
+			}
 			if(Statussp=='s') {
 					//Prüfung ob verloren d>s
 					if(dealer.getSumme()>summesp&&dealer.getSumme()<22)Statussp='l';
@@ -364,5 +366,6 @@ public class Spieler {
 				// Kontostand Berechnung bei Blackjack
 				else if(Statussp=='b')kontostand+=setzensp*2.5;
 			}
- }
+	}
+
 }

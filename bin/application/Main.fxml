@@ -15,7 +15,7 @@
    <children>
       <Pane fx:id="pd" layoutX="400.0" layoutY="27.0" prefHeight="244.0" prefWidth="329.0" style="-fx-border-color: #d5c820; -fx-border-width: 5;" visible="false">
          <children>
-            <ImageView fx:id="dkarte1" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="Bogen" />
+            <ImageView fx:id="dkarte1" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="dkarte2" fitHeight="150.0" fitWidth="100.0" layoutX="50.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="dkarte3" fitHeight="150.0" fitWidth="100.0" layoutX="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="dkarte4" fitHeight="150.0" fitWidth="100.0" layoutX="150.0" pickOnBounds="true" preserveRatio="true" />
@@ -30,7 +30,7 @@
                   <Font size="21.0" />
                </font>
             </Text>
-            <Text fx:id="dsum" layoutX="305.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="dsum" layoutX="305.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" visible="false">
                <font>
                   <Font size="21.0" />
                </font>

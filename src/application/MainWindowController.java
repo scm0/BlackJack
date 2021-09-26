@@ -19,13 +19,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class MainWindowController extends Deck{
-	public Main main;
 	
-	public Deck deck; 
+	
+	private Deck deck; 
 	private Spiel spiel;
-	public int anzahl=0,startkapital=0,spielsteuerungspieler=0,splittspieler=0;
-	public int xz;
-	private Dealer dealer =new Dealer();
+	public int anzahl=0,startkapital=0,spielsteuerungspieler=0;
+	private Dealer dealer ;
 	
 	
 	//Views
@@ -46,17 +45,15 @@ public class MainWindowController extends Deck{
 	
 	
 	public MainWindowController() {
-		
+		//erstellen der Objekte
 	deck=new Deck();
 	deck.neuesdeck();
 	spiel=new Spiel();
-	
+	dealer =new Dealer();
 		
 	}
 	
-	public void setMain(Main main) {
-		
-	}
+	
 	
 	
 	
@@ -117,8 +114,7 @@ public class MainWindowController extends Deck{
 				ps4n.setVisible(true);
 				ps5n.setVisible(true);break;
 		}
-		//Panel sichtbar setzen
-		pd.setVisible(true);
+			
 	}
 	}
 	public void spielsteuerung() {//Hier werden die Eingaben währen des Spiels getätigt
@@ -138,7 +134,7 @@ public class MainWindowController extends Deck{
 					}
 		//Wenn jeder seine Karten hat geht es zum Dealer
 			else if (dealer.getStatus()==false) {int i=0;i++;
-				zdealerkartenanzeigen();System.out.println(i+"counter");
+				zdealerkartenanzeigen();
 				bsplitt.setVisible(false);}
 						
 	}
@@ -148,12 +144,13 @@ public class MainWindowController extends Deck{
 	@FXML
 	public void start() {//spielstarten
 		//spieler erstellen
-		System.out.println(anzahl+"anzahl");
 		spiel.anzahlspieler(anzahl,startkapital);
+		//Dealer feld sichbar setzen
+		pd.setVisible(true);
 		//Namen der Spieler einlesen 
 		try {
 			for(int i=0;i<anzahl;i++) {
-				spielerpanel(true,i);System.out.println(i+"start");
+				spielerpanel(true,i);
 				switch(i) {
 					case 0: spiel.getSpieler().get(i).setName(tfs1n.getText());
 							s1name.setText(spiel.getSpieler().get(i).getName());
@@ -303,7 +300,7 @@ public class MainWindowController extends Deck{
 	}
 	public void splitt() {//Ausgabe bei Splitt
 	spiel.getSpieler().get(spielsteuerungspieler).setSplitt(true);//Wert setzen bei Spieler um zu merken das ein Splitt gespielt wird
-	splittspieler=spiel.getSpieler().get(spielsteuerungspieler).getSpielerid();
+	
 	//Wert K2 von Summe abziehen
 	int n=spiel.getSpieler().get(spielsteuerungspieler).getK2();
 	if(deck.getDeck().get(n).getWert()<14 && deck.getDeck().get(n).getWert()>10)//Auswertung ob Karte zwischen König und Bube liegt
@@ -522,16 +519,17 @@ public class MainWindowController extends Deck{
 		dkarte1.setImage(deck.getDeck().get(dealer.getK1()).getImage());
 		dkarte2.setImage(deck.getDeck().get(52).getImage());
 		dsum.setText(Integer.toString(dealer.getSumme()));
-		dsum.setVisible(true);
+		
 		}catch (Exception e) {
 			// TODO Automatisch generierter Erfassungsblock
 			e.printStackTrace();
-			System.out.println("nix gehen");;
+			
 		}
 		;
 	}
 	public void zdealerkartenanzeigen() {//+ Karten für Dealer
 		dealer.setStatus(true);
+		dsum.setVisible(true);
 		//Zufallszahl für 2 Karte
 		int n = spiel.zufahlzahl();
 		dkarte2.setImage(deck.getDeck().get(dealer.getK2()).getImage());
@@ -580,7 +578,6 @@ public class MainWindowController extends Deck{
 		for(int x=0;x<anzahl;x++) {
 		//Die entscheidende auswertung wer gewonnen hat
 		spiel.getSpieler().get(x).schlussauswertung(dealer);
-		spiel.getSpieler().get(x).schlussauswertungsp(dealer);
 		kontostandanzeigen(x);
 		statusanzeigesp(x);
 		statusanzeige(x);
@@ -616,7 +613,7 @@ public class MainWindowController extends Deck{
 		//Auswertung welcher Text angezeigt werden muss
 		if(spiel.getSpieler().get(i).getStatus()=='b') status= "BlackJack";
 		else if(spiel.getSpieler().get(i).getStatus()=='w')status="Win";
-		else if (spiel.getSpieler().get(i).getStatus()=='l')status="Loose";
+		else if (spiel.getSpieler().get(i).getStatus()=='l')status="Lose";
 		else if(spiel.getSpieler().get(i).getStatus()=='p')status="Push";
 		else if(spiel.getSpieler().get(i).getStatus()=='n')status="NoMoney";
 		
@@ -744,6 +741,7 @@ public class MainWindowController extends Deck{
 			}
 		}
 		dsum.setText(null);
+		dsum.setVisible(false);
 		dkarte1.setImage(null);
 		dkarte2.setImage(null);
 		dkarte3.setImage(null);
@@ -765,7 +763,7 @@ public class MainWindowController extends Deck{
 		}
 	}
 	
-	//Auswertung
+	
 
 
 }

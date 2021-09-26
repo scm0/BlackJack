@@ -5,8 +5,7 @@ import java.util.Random;
 
 public class Spiel {
 	private ArrayList<Spieler> spieler =new ArrayList<>();
-	private boolean stand;
-	Random zufallszahl = new Random();
+	private Random zufallszahl = new Random();
 	Spiel(){
 		
 		
@@ -25,9 +24,9 @@ public class Spiel {
 		
 
 
-	//Hier wird die Anzahl Spieler als Objekte angelegt
 	
-	public void anzahlspieler(int anzahl,int kontostand) {
+	
+	public void anzahlspieler(int anzahl,int kontostand) {//Hier wird die Anzahl Spieler als Objekte angelegt
 		
 		for(int i=0;i<anzahl;i++) {
 			Spieler s =new Spieler();
@@ -38,10 +37,10 @@ public class Spiel {
 		}
 	}
 
-	//Hier werden die Karten ausgegeben für die erste runde
 	
-	public boolean Statuspruefung(int anzahl,int spielerid,char status) {
-		stand=false;
+	
+	public boolean Statuspruefung(int anzahl,int spielerid,char status) {//Hier wird geprüft ob ein gewisser Status bei den Spieler vorhanden ist
+		boolean stand=false;
 		for(int i=spielerid ;i<anzahl;i++) {
 			if(this.getSpieler().get(i).getStatus()==status)stand=true;
 			
@@ -50,9 +49,9 @@ public class Spiel {
 		return stand;
 		
 	}
-	public int zufahlzahl() {
-		int n = zufallszahl.nextInt(49);
-		n+=3;
+	public int zufahlzahl() {//Generierung der zufallszahl für die Karten verteilung
+		int n = zufallszahl.nextInt(51);
+		
 		return n;
 		
 	}
@@ -103,7 +102,7 @@ public class Spiel {
 	}
 
 	public boolean nomoney(int anzahl) {
-		
+		//Auswertung ob nicht alle Kontostände auf null sind
 		boolean n=false,x=false;
 		for(int i=0;i<anzahl;i++) {
 			if(spieler.get(i).getStatus()=='n'&&x==false)n=true;

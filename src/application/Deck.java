@@ -33,7 +33,7 @@ public void setDeck(ArrayList<Karten> deck) {
 
 public void neuesdeck() {
 	
-		try {File myFile = new File("rsc/roots.bilder.txt");
+		try {File myFile = new File("rsc/roots.bilder.txt");//öffnen der textdatei mit den Pfaden für die bilder
 		
 			Scanner myReader = new Scanner(myFile);
 			int i=0;
@@ -67,9 +67,7 @@ public void neuesdeck() {
 					z++;
 				}
 			}
-			for(i=0;i<53;i++) {
-			System.out.println(deck.get(i).getForm()+deck.get(i).getWert());		
-			}
+			
 			myReader.close();
 		} catch (FileNotFoundException e) {
 			// TODO Automatisch generierter Erfassungsblock

@@ -132,8 +132,8 @@ public class Dealer {
 		this.anzahlkarten = anzahlkarten;
 	}
 
-	public void dealersummenzähler(int n,Deck deck) {
-		
+	public void dealersummenzähler(int n,Deck deck) {//n=Kartenwert
+		//Abfrage ob eine Bildkarte
 		if(deck.getDeck().get(n).getWert()<14 && deck.getDeck().get(n).getWert()>10)
 			summe+=10;
 		else if(deck.getDeck().get(n).getWert()==14)
@@ -147,7 +147,7 @@ public class Dealer {
 			ass=false;
 		}
 	}
-	public void dnewround() {
+	public void dnewround() {//reset für neue runde
 		k1=0;
 		k2=0;
 		k3=0;

@@ -33,7 +33,7 @@ public class Main extends Application {
 			primaryStage.setMinWidth(1600);
 			
 			MainWindowController MainWindowController = loader.getController();
-			MainWindowController.setMain(this);
+			
 			
 			Scene scene =new Scene(pane);
 			primaryStage.setScene(scene);
